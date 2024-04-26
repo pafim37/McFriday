@@ -1,4 +1,5 @@
 using McF.Process.Context;
+using McF.Process.DAL;
 using Microsoft.EntityFrameworkCore;
 
 namespace McF.Process
@@ -16,6 +17,8 @@ namespace McF.Process
 
             // Add services to the container.
             builder.Services.AddControllers();
+
+            builder.Services.AddTransient<IRepository, Repository>();
 
             WebApplication app = builder.Build();
             app.UseAuthorization();
