@@ -1,0 +1,7 @@
+.header {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 10px;
+    color: #30c9b0
+}

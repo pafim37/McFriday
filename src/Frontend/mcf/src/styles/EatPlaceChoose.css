@@ -1,13 +1,11 @@
-.item {
-  display: flex;
-  justify-content: center;
-  height: "50vh";
-  min-height: 250px;
-}
-
 .button {
   width: 95%;
   font-size: 3vw;
+}
+
+.container {
+  align-items: center;
+  min-height: 100vh;
 }
 
 .header {
@@ -16,4 +14,11 @@
     text-align: center;
     margin: 10px;
     color: #30c9b0
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  height: "50vh";
+  min-height: 250px;
 }
