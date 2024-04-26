@@ -1,6 +1,0 @@
-@McF.Process_HostAddress = http://localhost:5226
-
-GET {{McF.Process_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
