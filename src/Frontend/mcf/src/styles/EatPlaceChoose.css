@@ -1,0 +1,11 @@
+.item {
+  display: flex;
+  justify-content: center;
+  height: "50vh";
+  min-height: 250px;
+}
+
+.button {
+  width: 95%;
+  font-size: 3vw;
+}
