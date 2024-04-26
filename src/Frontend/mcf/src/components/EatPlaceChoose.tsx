@@ -1,4 +1,4 @@
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import "../styles/EatPlaceChoose.css";
 
@@ -14,6 +14,9 @@ const EatPlaceChoose : React.FC<EatPlaceChooseProps> = (props) => {
 
   return (
     <Grid container spacing={1}>
+        <Grid item xs={12} sm={12}>
+            <Typography variant="h3" className="header">Na miejscu czy na wynos?</Typography>
+        </Grid>
       <Grid item className="item" xs={12} sm={6}>
         <Button variant="contained" className="button" onClick={() => handleClick("restaurant")}>
           Na miejscu
