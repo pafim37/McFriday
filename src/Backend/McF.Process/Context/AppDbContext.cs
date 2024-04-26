@@ -1,5 +1,7 @@
 ﻿using McF.Process.Models;
+using McF.Process.Models.Primitives;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace McF.Process.Context
 {
@@ -11,11 +13,21 @@ namespace McF.Process.Context
             this.configuration = configuration;
         }
 
+        public DbSet<Product> Products { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql(configuration.GetConnectionString("AppDb"));
         }
 
-        public DbSet<Entity> Entities { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Entity<Product>()
+                .Property(d => d.Type)
+                .HasConversion(new EnumToStringConverter<ProductType>());
+            new DbInitializer(modelBuilder).Seed();
+        }
+
     }
 }
