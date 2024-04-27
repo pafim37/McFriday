@@ -15,10 +15,10 @@ namespace McF.Process.Controllers
             this.repository = repository;
         }
 
-        [HttpGet("/")]
+        [HttpGet]
         public async Task<IActionResult> Get()
         {
-            List<Product> products = await repository.GetAllProducts().ConfigureAwait(false);
+            IEnumerable<ProductType> products = await repository.GetAllProductTypes().ConfigureAwait(false);
             return Ok(products);
         }
     }

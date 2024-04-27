@@ -1,7 +1,7 @@
 using McF.Process.Context;
 using McF.Process.DAL;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 namespace McF.Process
 {
     public class Program
@@ -22,7 +22,9 @@ namespace McF.Process
                options.UseNpgsql(configuration.GetConnectionString("AppDb")));
 
             // Add services to the container.
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             builder.Services.AddTransient<IRepository, Repository>();
 

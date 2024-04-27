@@ -1,7 +1,5 @@
 ﻿using McF.Process.Models;
-using McF.Process.Models.Primitives;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace McF.Process.Context
 {
@@ -14,6 +12,7 @@ namespace McF.Process.Context
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductType> ProductTypes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -22,10 +21,12 @@ namespace McF.Process.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder
-                .Entity<Product>()
-                .Property(d => d.Type)
-                .HasConversion(new EnumToStringConverter<ProductType>());
+            modelBuilder.Entity<Product>()
+                .HasOne(e => e.ProductType)
+                .WithMany(e => e.Products)
+                .HasForeignKey(e => e.ProductTypeId)
+                .IsRequired();
+
             new DbInitializer(modelBuilder).Seed();
         }
 
