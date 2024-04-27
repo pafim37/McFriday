@@ -15,7 +15,7 @@ namespace McF.Process.Controllers
             this.repository = repository;
         }
 
-        [HttpGet]
+        [HttpGet("/")]
         public async Task<IActionResult> Get()
         {
             IEnumerable<ProductType> products = await repository.GetAllProductTypes().ConfigureAwait(false);
