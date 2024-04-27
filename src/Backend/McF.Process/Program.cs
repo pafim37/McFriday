@@ -10,6 +10,12 @@ namespace McF.Process
         {
             WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+            // CORS
+            builder.Services.AddCors(o => o.AddPolicy("McFPolicy", builder =>
+            {
+                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(); // TODO: improve cors policy
+            }));
+
             // Add Postgres database
             IConfiguration configuration = builder.Configuration;
             builder.Services.AddDbContext<AppDbContext>(options =>
@@ -21,6 +27,7 @@ namespace McF.Process
             builder.Services.AddTransient<IRepository, Repository>();
 
             WebApplication app = builder.Build();
+            app.UseCors("McFPolicy");
             app.UseAuthorization();
             app.MapControllers();
             app.Run();
