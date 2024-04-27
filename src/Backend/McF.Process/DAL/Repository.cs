@@ -13,10 +13,9 @@ namespace McF.Process.DAL
             this.context = context;
         }
 
-        public async Task<List<Product>> GetAllProducts()
+        public async Task<IEnumerable<ProductType>> GetAllProductTypes()
         {
-            return await context.Products.ToListAsync();
+            return await context.ProductTypes.Include(p => p.Products).ToListAsync();
         }
-
     }
 }
