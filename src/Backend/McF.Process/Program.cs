@@ -12,6 +12,10 @@ namespace McF.Process
         {
             WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+            // Logs
+            builder.Logging.ClearProviders();
+            builder.Logging.AddConsole();
+
             // CORS
             builder.Services.AddCors(o => o.AddPolicy("McFPolicy", builder =>
             {
