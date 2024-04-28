@@ -1,7 +1,7 @@
-﻿using McF.Process.Models;
+﻿using McF.Process.DTO;
 using MediatR;
 
 namespace McF.Process.Queries
 {
-    public record GetAllProductTypesQuery() : IRequest<IEnumerable<ProductType>>;
+    public record GetAllProductTypesQuery() : IRequest<IEnumerable<ProductTypeDTO>>;
 }

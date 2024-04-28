@@ -32,6 +32,8 @@ namespace McF.Process
 
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             WebApplication app = builder.Build();
             app.UseCors("McFPolicy");
             app.UseAuthorization();

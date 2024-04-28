@@ -10,6 +10,5 @@ namespace McF.Process.Models
         public ProductType? ProductType { get; set; }
         public string? Name { get; set; }
         public byte[]? ImageByteArray { get; set; }
-        public string? ImageBase64 { get; set; }
     }
 }
