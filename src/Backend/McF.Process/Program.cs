@@ -15,7 +15,7 @@ namespace McF.Process
             // CORS
             builder.Services.AddCors(o => o.AddPolicy("McFPolicy", builder =>
             {
-                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(); // TODO: improve cors policy
+                builder.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader();
             }));
 
             // Add Postgres database
