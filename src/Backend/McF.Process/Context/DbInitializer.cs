@@ -27,14 +27,15 @@ namespace McF.Process.Context
             );
 
             modelBuilder.Entity<Product>().HasData(
-                new Product() { Id = 2, ProductTypeId = 1, Name = "Sprite", PhotoPath=string.Empty},
-                new Product() { Id = 3, ProductTypeId = 1, Name = "Fanta", PhotoPath=string.Empty},
-                new Product() { Id = 4, ProductTypeId = 2, Name = "Hamburger", PhotoPath=string.Empty},
-                new Product() { Id = 5, ProductTypeId = 2, Name = "Cheesehamburger", PhotoPath=string.Empty},
-                new Product() { Id = 6, ProductTypeId = 2, Name = "Spicy Burger", PhotoPath=string.Empty},
-                new Product() { Id = 7, ProductTypeId = 3, Name = "Small fries", PhotoPath=string.Empty},
-                new Product() { Id = 8, ProductTypeId = 3, Name = "Medium fries", PhotoPath=string.Empty},
-                new Product() { Id = 9, ProductTypeId = 3, Name = "Large fries", PhotoPath=string.Empty}
+                new Product() { Id = 1, ProductTypeId = 1, Name = "Cocacola", ImageByteArray = File.ReadAllBytes("img//cocacola.jpg") },
+                new Product() { Id = 2, ProductTypeId = 1, Name = "Sprite", ImageByteArray = File.ReadAllBytes("img//sprite.jpg") },
+                new Product() { Id = 3, ProductTypeId = 1, Name = "Fanta", ImageByteArray = File.ReadAllBytes("img//fanta.jpg") },
+                new Product() { Id = 4, ProductTypeId = 2, Name = "Hamburger" },
+                new Product() { Id = 5, ProductTypeId = 2, Name = "Cheesehamburger"},
+                new Product() { Id = 6, ProductTypeId = 2, Name = "Spicy Burger"},
+                new Product() { Id = 7, ProductTypeId = 3, Name = "Small fries"},
+                new Product() { Id = 8, ProductTypeId = 3, Name = "Medium fries"},
+                new Product() { Id = 9, ProductTypeId = 3, Name = "Large fries"}
             );
         }
     }

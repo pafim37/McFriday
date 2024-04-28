@@ -45,7 +45,7 @@ const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
           <Grid container>
             {currProducts.map(p => (
               <Grid xs={4}>
-                <ProductExposition name={p.name}/>
+                <ProductExposition name={p.name} imageData={p.imageBase64}/>
               </Grid>
             ))}
           </Grid>
