@@ -1,8 +1,9 @@
 using McF.Process.Context;
+using McF.Process.Controllers;
 using McF.Process.DAL;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using System.Reflection;
+
 namespace McF.Process
 {
     public class Program
@@ -14,7 +15,7 @@ namespace McF.Process
             // CORS
             builder.Services.AddCors(o => o.AddPolicy("McFPolicy", builder =>
             {
-                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(); // TODO: improve cors policy
+                builder.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader();
             }));
 
             // Add Postgres database
@@ -29,10 +30,15 @@ namespace McF.Process
 
             builder.Services.AddTransient<IRepository, Repository>();
 
+            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ProductController).Assembly));
+
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             WebApplication app = builder.Build();
             app.UseCors("McFPolicy");
             app.UseAuthorization();
             app.MapControllers();
+
             app.Run();
         }
     }
