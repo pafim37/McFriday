@@ -9,6 +9,7 @@ namespace McF.Process.Models
         public int ProductTypeId { get; set; }
         public ProductType? ProductType { get; set; }
         public string? Name { get; set; }
-        public string? PhotoPath { get; set; }
+        public byte[]? ImageByteArray { get; set; }
+        public string? ImageBase64 { get; set; }
     }
 }
