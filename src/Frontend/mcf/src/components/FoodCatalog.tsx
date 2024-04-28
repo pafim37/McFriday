@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Grid,
   List,
@@ -5,7 +6,7 @@ import {
   ListItemButton,
   Typography,
 } from "@mui/material";
-import React from "react";
+import ProductExposition from "./ProductExposition.tsx";
 
 interface FoodCatalogProps {
   productTypes: Array<ProductType>;
@@ -42,8 +43,10 @@ const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
         </Grid>
         <Grid item xs={10}>
           <Grid container>
-            {currProducts.map((p) => (
-              <Grid xs={4}>{p.name}</Grid>
+            {currProducts.map(p => (
+              <Grid xs={4}>
+                <ProductExposition name={p.name}/>
+              </Grid>
             ))}
           </Grid>
         </Grid>
