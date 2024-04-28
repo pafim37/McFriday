@@ -27,9 +27,9 @@ namespace McF.Process.Context
             );
 
             modelBuilder.Entity<Product>().HasData(
-                new Product() { Id = 1, ProductTypeId = 1, Name = "Cocacola", ImageByteArray = File.ReadAllBytes("img//cocacola.jpg") },
-                new Product() { Id = 2, ProductTypeId = 1, Name = "Sprite", ImageByteArray = File.ReadAllBytes("img//sprite.jpg") },
-                new Product() { Id = 3, ProductTypeId = 1, Name = "Fanta", ImageByteArray = File.ReadAllBytes("img//fanta.jpg") },
+                new Product() { Id = 1, ProductTypeId = 1, Name = "Cocacola", ImageByteArray = File.ReadAllBytes("..//McF.Service//img//cocacola.jpg") },
+                new Product() { Id = 2, ProductTypeId = 1, Name = "Sprite", ImageByteArray = File.ReadAllBytes("..//McF.Service//img//sprite.jpg") },
+                new Product() { Id = 3, ProductTypeId = 1, Name = "Fanta", ImageByteArray = File.ReadAllBytes("..//McF.Service//img//fanta.jpg") },
                 new Product() { Id = 4, ProductTypeId = 2, Name = "Hamburger" },
                 new Product() { Id = 5, ProductTypeId = 2, Name = "Cheesehamburger"},
                 new Product() { Id = 6, ProductTypeId = 2, Name = "Spicy Burger"},
