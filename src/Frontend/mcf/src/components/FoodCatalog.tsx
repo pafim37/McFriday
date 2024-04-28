@@ -7,6 +7,8 @@ import {
   Typography,
 } from "@mui/material";
 import ProductExposition from "./ProductExposition.tsx";
+import ProductType from "../types/ProductType.ts";
+import Product from "../types/Product.ts";
 
 interface FoodCatalogProps {
   productTypes: Array<ProductType>;
@@ -43,9 +45,9 @@ const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
         </Grid>
         <Grid item xs={10}>
           <Grid container>
-            {currProducts.map(p => (
-              <Grid xs={4}>
-                <ProductExposition name={p.name} imageData={p.imageBase64}/>
+            {currProducts.map((p, index) => (
+              <Grid item xs={4} key={index}>
+                <ProductExposition name={p.name} imageData={p.imageBase64} />
               </Grid>
             ))}
           </Grid>
