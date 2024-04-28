@@ -3,6 +3,7 @@ using McF.Process.DAL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using System.Reflection;
 namespace McF.Process
 {
     public class Program
@@ -29,10 +30,13 @@ namespace McF.Process
 
             builder.Services.AddTransient<IRepository, Repository>();
 
+            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
             WebApplication app = builder.Build();
             app.UseCors("McFPolicy");
             app.UseAuthorization();
             app.MapControllers();
+
             app.Run();
         }
     }

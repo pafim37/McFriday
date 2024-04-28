@@ -1,5 +1,7 @@
 ﻿using McF.Process.DAL;
 using McF.Process.Models;
+using McF.Process.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -9,28 +11,18 @@ namespace McF.Process.Controllers
     [ApiController]
     public class ProductController : Controller
     {
-        private readonly IRepository repository;
+        private readonly IMediator mediator;
 
-        public ProductController(IRepository repository)
+        public ProductController(IMediator mediator)
         {
-            this.repository = repository;
+            this.mediator = mediator;
         }
 
         [HttpGet("/")]
         public async Task<IActionResult> Get()
         {
-            IEnumerable<ProductType> productTypes = await repository.GetAllProductTypes().ConfigureAwait(false);
-            foreach (ProductType productType in productTypes) 
-            {
-                foreach (var product in productType.Products)
-                {
-                    if (product.ImageByteArray != null)
-                    {
-                        product.ImageBase64 = Convert.ToBase64String(product.ImageByteArray);
-                    }
-                }
-            }
-            return Ok(productTypes);
+            var result = await mediator.Send(new GetAllProductTypesQuery()).ConfigureAwait(false);
+            return Ok(result);
         }
     }
 }
