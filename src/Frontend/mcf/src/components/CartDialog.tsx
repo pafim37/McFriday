@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import CartContext from "../context/CartDataProvider.tsx";
+import ProductImage from "./ProductImage.tsx";
 
 interface CartDialogProps {
   isOpen: boolean;
@@ -32,12 +33,7 @@ const CartDialog: React.FC<CartDialogProps> = (props) => {
         {context.orders.map((order, index) => (
           <Stack key={index} direction={"row"}>
             <Typography>{order.number} x </Typography>
-            <img
-              src={`data:image/jpeg;base64,${order.product.imageBase64}`}
-              alt="Obraz"
-              width="100"
-              height="100"
-            />
+            <ProductImage imageData={order.product.imageBase64} />
             <Typography>{order.size}ml</Typography>
             {order.extension[0] === "WithIce" ? (
               <Typography>Z lodem</Typography>

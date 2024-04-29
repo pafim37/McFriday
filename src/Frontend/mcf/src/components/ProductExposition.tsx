@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import AddProductToCartDialog from "./AddProductToCartDialog.tsx";
 import Product from "../types/Product.ts";
+import ProductImage from "./ProductImage.tsx";
 
 interface ProductExpositionProps {
   isNewOrder: boolean;
@@ -20,12 +21,7 @@ const ProductExposition: React.FC<ProductExpositionProps> = (props) => {
     <>
       <Box onClick={handleClick}>
         {props.product.imageBase64 && (
-          <img
-            src={`data:image/jpeg;base64,${props.product.imageBase64}`}
-            alt="Obraz"
-            width="100"
-            height="100"
-          />
+          <ProductImage imageData={props.product.imageBase64} />
         )}
         <Typography>{props.product.name}</Typography>
       </Box>

@@ -18,6 +18,7 @@ import React from "react";
 import CartContext from "../context/CartDataProvider.tsx";
 import Product from "../types/Product.ts";
 import Order from "../types/Order.ts";
+import ProductImage from "./ProductImage.tsx";
 
 interface AddProductToCartDialogProps {
   open: boolean;
@@ -37,7 +38,6 @@ const AddProductToCartDialog: React.FC<AddProductToCartDialogProps> = (
 
   const handleOrder = (add: boolean) => {
     if (add) {
-      console.log("xyz: ", props.product)
       var extension: Array<string> = [];
       if (isIce) {
         extension = ["WithIce"];
@@ -94,12 +94,7 @@ const AddProductToCartDialog: React.FC<AddProductToCartDialogProps> = (
           {props.product.name}
         </Typography>
         <Box sx={{ m: "auto" }}>
-          <img
-            src={`data:image/jpeg;base64,${props.product.imageBase64}`}
-            alt="Obraz"
-            width="100"
-            height="100"
-          />
+          <ProductImage imageData={props.product.imageBase64} />
         </Box>
         <Stack
           direction={"row"}
