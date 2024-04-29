@@ -6,9 +6,9 @@ using McF.Process.Queries;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace McF.Process.Handlers
+namespace McF.Service.Handlers.Queries
 {
-    public class GetAllProductTypesHandler : IRequestHandler<GetAllProductTypesQuery, IEnumerable<DTO.ProductTypeDTO>>
+    public class GetAllProductTypesHandler : IRequestHandler<GetAllProductTypesQuery, IEnumerable<ProductTypeDTO>>
     {
         private readonly IRepository repository;
         private readonly IMapper mapper;

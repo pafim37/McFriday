@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "McF.Process", "McF.Process\McF.Process.csproj", "{1D0FDA53-338D-4CAB-8B8B-8FB2F84F4DEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McF.Service", "McF.Service\McF.Service.csproj", "{C7E59AB5-75DE-41A9-9A03-6806D21D262C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "McF.Service", "McF.Service\McF.Service.csproj", "{C7E59AB5-75DE-41A9-9A03-6806D21D262C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

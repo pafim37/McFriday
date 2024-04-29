@@ -12,6 +12,8 @@ import ProductImage from "./ProductImage.tsx";
 import OrderRestartContext, {
   OrderRestartContextType,
 } from "../context/OrderRestartProvider.tsx";
+import axios from "axios";
+import CartType from "../types/CartType.ts";
 
 interface CartDialogProps {
   isOpen: boolean;
@@ -25,6 +27,14 @@ const CartDialog: React.FC<CartDialogProps> = (props) => {
   ) as OrderRestartContextType;
 
   const handleClick = () => {
+    var dataToSend = prepareDataToSend(cart);
+    axios.post("http://localhost:5226/", dataToSend)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
     setRestart(true);
     props.setIsOpen(false);
   };
@@ -50,3 +60,19 @@ const CartDialog: React.FC<CartDialogProps> = (props) => {
 };
 
 export default CartDialog;
+
+function prepareDataToSend( cart : CartType) {
+  var ordersToSend = Array<any>();
+  cart.orders.forEach(order => {
+    var newOrder = {
+      productName: order.product.name,
+      productType: order.product.productType,
+      size: order.size,
+      number: order.number,
+      extension: order.extension
+     }
+     ordersToSend.push(newOrder)
+  });
+  var dataToSend = {place: cart.place, orders: ordersToSend}
+  return dataToSend;
+}
