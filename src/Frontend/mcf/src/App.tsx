@@ -6,7 +6,7 @@ import ProductType from "./types/ProductType.ts";
 import { CartDataProvider } from "./context/CartDataProvider.tsx";
 
 const App = () => {
-  const [place, setPlace] = React.useState<string>("");
+  const [isPlace, setIsPlace] = React.useState<boolean>(false);
   const [productTypes, setProductTypes] = React.useState<Array<ProductType>>(
     []
   );
@@ -22,11 +22,13 @@ const App = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  return place === "" ? (
-    <EatPlaceChoose setPlace={setPlace} />
-  ) : (
+  return (
     <CartDataProvider>
-      <FoodCatalog productTypes={productTypes} />
+      {!isPlace ? (
+        <EatPlaceChoose setIsPlace={setIsPlace} />
+      ) : (
+        <FoodCatalog productTypes={productTypes} />
+      )}
     </CartDataProvider>
   );
 };

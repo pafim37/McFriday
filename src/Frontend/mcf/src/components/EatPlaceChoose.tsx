@@ -1,14 +1,18 @@
 import { Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import "../styles/EatPlaceChoose.css";
+import CartContext from "../context/CartDataProvider.tsx";
 
 interface EatPlaceChooseProps {
-  setPlace: React.Dispatch<React.SetStateAction<string>>;
+  setIsPlace: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const EatPlaceChoose: React.FC<EatPlaceChooseProps> = (props) => {
+  const orderData = React.useContext(CartContext);
+
   const handleClick = (place: string) => {
-    props.setPlace(place);
+    orderData.place = place;
+    props.setIsPlace(true);
   };
 
   return (
