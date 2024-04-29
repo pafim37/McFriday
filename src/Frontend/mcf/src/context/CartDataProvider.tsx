@@ -2,7 +2,7 @@ import React from "react";
 import CartType from "../types/CartType.ts";
 
 const initialData: CartType = {
-  order: [],
+  orders: [],
 };
 
 const CartContext = React.createContext<CartType>(initialData);

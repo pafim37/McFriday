@@ -10,7 +10,10 @@ import {
   Radio,
   RadioGroup,
   FormControl,
+  TextField,
 } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import React from "react";
 import CartContext from "../context/CartDataProvider.tsx";
 
@@ -24,22 +27,58 @@ interface AddProductToCartDialogProps {
 const AddProductToCartDialog: React.FC<AddProductToCartDialogProps> = (
   props
 ) => {
+  const [size, setSize] = React.useState<string>("500");
+  const [amount, setAmount] = React.useState<number>(1);
+  const [isIce, setIsIce] = React.useState<boolean>(true);
   const context = React.useContext(CartContext);
 
   const handleOrder = (add: boolean) => {
     if (add) {
-      console.log(context);
-      if (context.order === undefined) {
-        context.order = [{ name: "Test2", size: "XL", number: "1" } as Order];
+      var extension: Array<string> = [];
+      if (isIce) {
+        extension = ["WithIce"];
       } else {
-        context.order = [
-          ...context.order,
-          { name: "Test", size: "XL", number: "1" } as Order,
+        extension = ["WithoutIce"];
+      }
+      if (context.orders === undefined) {
+        context.orders = [
+          {
+            name: props.productName,
+            size: size,
+            number: amount.toString(),
+            extension: extension,
+          } as Order,
+        ];
+      } else {
+        context.orders = [
+          ...context.orders,
+          {
+            name: props.productName,
+            size: size,
+            number: amount.toString(),
+            extension: extension,
+          } as Order,
         ];
       }
-      console.log("ZADziałało");
     }
+    console.log(context);
     props.setOpen(false);
+  };
+
+  const handleSize = (event) => {
+    setSize(event.target.value);
+  };
+
+  const handleAmount = (increase: boolean) => {
+    if (increase) {
+      setAmount(amount + 1);
+    } else {
+      setAmount(amount - 1);
+    }
+  };
+
+  const handleIce = () => {
+    setIsIce(!isIce);
   };
 
   return (
@@ -57,24 +96,65 @@ const AddProductToCartDialog: React.FC<AddProductToCartDialogProps> = (
             height="100"
           />
         </Box>
+        <Stack
+          direction={"row"}
+          justifyItems={"center"}
+          display={"flex"}
+          justifyContent={"center"}
+        >
+          <Button onClick={() => handleAmount(false)}>
+            <RemoveIcon />
+          </Button>
+          <TextField value={amount} size="small" sx={{ width: "10%" }} />
+          <Button onClick={() => handleAmount(true)}>
+            <AddIcon />
+          </Button>
+        </Stack>
         <Box sx={{ m: "auto" }}>
           <FormControlLabel
-            value="end"
-            control={<Checkbox defaultChecked />}
+            value={isIce}
+            control={<Checkbox checked={isIce} onChange={handleIce} />}
             label="Z lodem"
             labelPlacement="end"
           />
         </Box>
         <FormControl sx={{ m: "auto" }}>
-          <RadioGroup row>
-            <FormControlLabel value="300" control={<Radio />} label="300ml" />
-            <FormControlLabel value="500" control={<Radio />} label="500ml" />
-            <FormControlLabel value="700" control={<Radio />} label="700ml" />
+          <RadioGroup row defaultValue="500">
+            <FormControlLabel
+              value="300"
+              control={<Radio />}
+              label="300ml"
+              onChange={handleSize}
+            />
+            <FormControlLabel
+              value="500"
+              control={<Radio />}
+              label="500ml"
+              onChange={handleSize}
+            />
+            <FormControlLabel
+              value="700"
+              control={<Radio />}
+              label="700ml"
+              onChange={handleSize}
+            />
           </RadioGroup>
         </FormControl>
-        <Stack direction={"row"} sx={{ m: "auto" }}>
-          <Button onClick={() => handleOrder(true)}>Tak</Button>
-          <Button onClick={() => handleOrder(false)}>Nie</Button>
+        <Stack direction={"row"} spacing={2} sx={{ m: "auto", p: 2 }}>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => handleOrder(true)}
+          >
+            Tak
+          </Button>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => handleOrder(false)}
+          >
+            Nie
+          </Button>
         </Stack>
       </Dialog>
     </>

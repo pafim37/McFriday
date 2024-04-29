@@ -55,7 +55,9 @@ const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
           </Grid>
         </Grid>
         <Grid item xs={2}>
-          {orderData.order[0].name}
+          {orderData.orders.map((o) => (
+            <>{o.name}</>
+          ))}
         </Grid>
       </Grid>
     </>

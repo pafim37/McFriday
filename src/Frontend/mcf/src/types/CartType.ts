@@ -1,5 +1,5 @@
 type CartType = {
-    order : Array<Order>,
+    orders : Array<Order>,
   }
 
 export default CartType;
