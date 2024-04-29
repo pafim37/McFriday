@@ -10,6 +10,9 @@ import {
 } from "@mui/material";
 import CartContext from "../context/CartDataProvider.tsx";
 import ProductImage from "./ProductImage.tsx";
+import OrderRestartContext, {
+  OrderRestartContextType,
+} from "../context/OrderRestartProvider.tsx";
 
 interface CartDialogProps {
   isOpen: boolean;
@@ -17,20 +20,22 @@ interface CartDialogProps {
 }
 
 const CartDialog: React.FC<CartDialogProps> = (props) => {
-  const context = React.useContext(CartContext);
+  const cartContext = React.useContext(CartContext);
+  const { restart, setRestart } = React.useContext(
+    OrderRestartContext
+  ) as OrderRestartContextType;
 
   const handleClick = () => {
+    console.log(restart);
+    setRestart(true);
     props.setIsOpen(false);
   };
 
-  React.useEffect(() => {
-    console.log(context);
-  }, []);
   return (
     <Dialog open={props.isOpen}>
       <DialogTitle>Koszyk</DialogTitle>
       <Box>
-        {context.orders.map((order, index) => (
+        {cartContext.orders.map((order, index) => (
           <Stack key={index} direction={"row"}>
             <Typography>{order.number} x </Typography>
             <ProductImage imageData={order.product.imageBase64} />
