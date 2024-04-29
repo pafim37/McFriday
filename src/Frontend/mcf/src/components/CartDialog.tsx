@@ -41,7 +41,7 @@ const CartDialog: React.FC<CartDialogProps> = (props) => {
           </Stack>
         ))}
       </Box>
-      <Button onClick={handleClick}>OK</Button>
+      <Button onClick={handleClick}>Zamów</Button>
     </Dialog>
   );
 };

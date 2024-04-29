@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import EatPlaceChoose from "./components/EatPlaceChoose.tsx";
-import FoodCatalog from "./components/FoodCatalog.tsx";
+import MainPanel from "./components/MainPanel.tsx";
 import ProductType from "./types/ProductType.ts";
 import { CartDataProvider } from "./context/CartDataProvider.tsx";
 
@@ -10,6 +10,7 @@ const App = () => {
   const [productTypes, setProductTypes] = React.useState<Array<ProductType>>(
     []
   );
+
   const baseUrl = "http://localhost:5226/";
 
   React.useEffect(() => {
@@ -27,7 +28,7 @@ const App = () => {
       {!isPlace ? (
         <EatPlaceChoose setIsPlace={setIsPlace} />
       ) : (
-        <FoodCatalog productTypes={productTypes} />
+        <MainPanel productTypes={productTypes} />
       )}
     </CartDataProvider>
   );

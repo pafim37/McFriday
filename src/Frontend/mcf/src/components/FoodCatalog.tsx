@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import {
   Box,
   Button,
@@ -22,24 +22,19 @@ interface FoodCatalogProps {
 const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
   const [currIndex, setCurrIndex] = React.useState<number>(0);
   const [currProducts, setCurrProducts] = React.useState<Array<Product>>([]);
-  const [isOpenCart, setIsOpenCart] = React.useState<boolean>(false);
   const [isNewOrder, setIsNewOrder] = React.useState<boolean>(true);
+  const [isOpenCart, setIsOpenCart] = React.useState<boolean>(false);
   const orderData = React.useContext(CartContext);
+  const handleOpenCart = () => {
+    setIsOpenCart(true);
+  };
 
   const handleClick = (index: number, productType: ProductType) => {
     setCurrIndex(index);
     setCurrProducts(productType.products);
   };
-
-  const handleOpenCart = () => {
-    setIsOpenCart(true);
-  }
-
   return (
     <>
-      <Typography variant="h3" className="header">
-        Witamy w restauracji McFriday
-      </Typography>
       <Grid container>
         <Grid item xs={2}>
           <List>
@@ -72,23 +67,11 @@ const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
           {orderData.orders.map((o, index) => (
             <Box key={index}>{o.product.name}</Box>
           ))}
-          <Button variant="contained" onClick={handleOpenCart}>Podejrzyj koszyk</Button>
+          <Button variant="contained" onClick={handleOpenCart}>
+            Podejrzyj koszyk
+          </Button>
         </Grid>
       </Grid>
-      <Stack
-        direction={"row"}
-        spacing={2}
-        justifyItems={"center"}
-        display={"flex"}
-        justifyContent={"center"}
-      >
-        <Button variant="contained" size="large">
-          Przejdź do podsumowania
-        </Button>
-        <Button variant="contained" size="large">
-          Rozpocznij jeszcze raz
-        </Button>
-      </Stack>
       <CartDialog isOpen={isOpenCart} setIsOpen={setIsOpenCart} />
     </>
   );
