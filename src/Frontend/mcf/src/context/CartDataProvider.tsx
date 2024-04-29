@@ -1,17 +1,21 @@
 import React from "react";
 import CartType from "../types/CartType.ts";
 
-const initialData: CartType = {
-  place: "",
-  orders: [],
-};
+export interface CartContextType {
+  cart: CartType;
+  setCart: React.Dispatch<React.SetStateAction<CartType>>;
+}
 
-const CartContext = React.createContext<CartType>(initialData);
+const CartContext = React.createContext<CartContextType | undefined>(undefined);
 
 export const CartDataProvider = ({ children }) => {
-  var data = initialData;
+  const [cart, setCart] = React.useState<CartType>({ place: "", orders: [] });
 
-  return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider value={{ cart, setCart }}>
+      {children}
+    </CartContext.Provider>
+  );
 };
 
 export default CartContext;

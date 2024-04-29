@@ -15,7 +15,7 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import React from "react";
-import CartContext from "../context/CartDataProvider.tsx";
+import CartContext, { CartContextType } from "../context/CartDataProvider.tsx";
 import Product from "../types/Product.ts";
 import Order from "../types/Order.ts";
 import ProductImage from "./ProductImage.tsx";
@@ -34,7 +34,7 @@ const AddProductToCartDialog: React.FC<AddProductToCartDialogProps> = (
   const [size, setSize] = React.useState<string>("500");
   const [amount, setAmount] = React.useState<number>(1);
   const [isIce, setIsIce] = React.useState<boolean>(true);
-  const context = React.useContext(CartContext);
+  const { cart } = React.useContext(CartContext) as CartContextType;
 
   const handleOrder = (add: boolean) => {
     if (add) {
@@ -44,8 +44,8 @@ const AddProductToCartDialog: React.FC<AddProductToCartDialogProps> = (
       } else {
         extension = ["WithoutIce"];
       }
-      if (context.orders === undefined) {
-        context.orders = [
+      if (cart.orders === undefined) {
+        cart.orders = [
           {
             product: props.product,
             size: size,
@@ -54,8 +54,8 @@ const AddProductToCartDialog: React.FC<AddProductToCartDialogProps> = (
           } as Order,
         ];
       } else {
-        context.orders = [
-          ...context.orders,
+        cart.orders = [
+          ...cart.orders,
           {
             product: props.product,
             size: size,
@@ -66,7 +66,7 @@ const AddProductToCartDialog: React.FC<AddProductToCartDialogProps> = (
       }
       props.setIsNewOrder(!props.isNewOrder);
     }
-    console.log(context);
+    console.log(cart);
     props.setOpen(false);
   };
 

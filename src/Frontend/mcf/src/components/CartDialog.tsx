@@ -2,13 +2,12 @@ import React from "react";
 import {
   Box,
   Button,
-  Checkbox,
   Dialog,
   DialogTitle,
   Stack,
   Typography,
 } from "@mui/material";
-import CartContext from "../context/CartDataProvider.tsx";
+import CartContext, { CartContextType } from "../context/CartDataProvider.tsx";
 import ProductImage from "./ProductImage.tsx";
 import OrderRestartContext, {
   OrderRestartContextType,
@@ -20,13 +19,12 @@ interface CartDialogProps {
 }
 
 const CartDialog: React.FC<CartDialogProps> = (props) => {
-  const cartContext = React.useContext(CartContext);
+  const { cart } = React.useContext(CartContext) as CartContextType;
   const { restart, setRestart } = React.useContext(
     OrderRestartContext
   ) as OrderRestartContextType;
 
   const handleClick = () => {
-    console.log(restart);
     setRestart(true);
     props.setIsOpen(false);
   };
@@ -35,12 +33,12 @@ const CartDialog: React.FC<CartDialogProps> = (props) => {
     <Dialog open={props.isOpen}>
       <DialogTitle>Koszyk</DialogTitle>
       <Box>
-        {cartContext.orders.map((order, index) => (
+        {cart.orders.map((o, index) => (
           <Stack key={index} direction={"row"}>
-            <Typography>{order.number} x </Typography>
-            <ProductImage imageData={order.product.imageBase64} />
-            <Typography>{order.size}ml</Typography>
-            {order.extension[0] === "WithIce" ? (
+            <Typography>{o.number} x </Typography>
+            <ProductImage imageData={o.product.imageBase64} />
+            <Typography>{o.size}ml</Typography>
+            {o.extension[0] === "WithIce" ? (
               <Typography>Z lodem</Typography>
             ) : null}
           </Stack>

@@ -3,14 +3,13 @@ import axios from "axios";
 import EatPlaceChoose from "./components/EatPlaceChoose.tsx";
 import MainPanel from "./components/MainPanel.tsx";
 import ProductType from "./types/ProductType.ts";
-import CartContext, { CartDataProvider } from "./context/CartDataProvider.tsx";
+import CartContext, { CartContextType } from "./context/CartDataProvider.tsx";
 
 import OrderRestartContext, {
   OrderRestartContextType,
 } from "./context/OrderRestartProvider.tsx";
 
 const App = () => {
-  const [isPlace, setIsPlace] = React.useState<boolean>(false);
   const [productTypes, setProductTypes] = React.useState<Array<ProductType>>(
     []
   );
@@ -19,7 +18,7 @@ const App = () => {
     OrderRestartContext
   ) as OrderRestartContextType;
 
-  const orderData = React.useContext(CartContext);
+  const { cart } = React.useContext(CartContext) as CartContextType;
 
   const baseUrl = "http://localhost:5226/";
 
@@ -35,16 +34,16 @@ const App = () => {
 
   React.useEffect(() => {
     console.log("Działa");
-  }, [restart]);
+  }, [cart]);
 
   return (
-    <CartDataProvider>
-      {!isPlace ? (
-        <EatPlaceChoose setIsPlace={setIsPlace} />
+    <>
+      {cart.place === "" ? (
+        <EatPlaceChoose />
       ) : (
         <MainPanel productTypes={productTypes} />
       )}
-    </CartDataProvider>
+    </>
   );
 };
 

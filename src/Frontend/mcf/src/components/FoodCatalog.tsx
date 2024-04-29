@@ -12,7 +12,7 @@ import {
 import ProductExposition from "./ProductExposition.tsx";
 import ProductType from "../types/ProductType.ts";
 import Product from "../types/Product.ts";
-import CartContext from "../context/CartDataProvider.tsx";
+import CartContext, { CartContextType } from "../context/CartDataProvider.tsx";
 import CartDialog from "./CartDialog.tsx";
 
 interface FoodCatalogProps {
@@ -24,7 +24,7 @@ const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
   const [currProducts, setCurrProducts] = React.useState<Array<Product>>([]);
   const [isNewOrder, setIsNewOrder] = React.useState<boolean>(true);
   const [isOpenCart, setIsOpenCart] = React.useState<boolean>(false);
-  const orderData = React.useContext(CartContext);
+  const { cart } = React.useContext(CartContext) as CartContextType;
   const handleOpenCart = () => {
     setIsOpenCart(true);
   };
@@ -64,8 +64,8 @@ const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
           </Grid>
         </Grid>
         <Grid item xs={2}>
-          {orderData.orders.map((o, index) => (
-            <Box key={index}>{o.product.name}</Box>
+          {cart.orders.map((order, index) => (
+            <Box key={index}>{order.product.name}</Box>
           ))}
           <Button variant="contained" onClick={handleOpenCart}>
             Podejrzyj koszyk
