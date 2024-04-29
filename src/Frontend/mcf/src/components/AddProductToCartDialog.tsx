@@ -16,12 +16,14 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import React from "react";
 import CartContext from "../context/CartDataProvider.tsx";
+import Product from "../types/Product.ts";
 
 interface AddProductToCartDialogProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  imageData: string;
-  productName: string;
+  product: Product;
+  isNewOrder: boolean;
+  setIsNewOrder: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const AddProductToCartDialog: React.FC<AddProductToCartDialogProps> = (
@@ -43,7 +45,7 @@ const AddProductToCartDialog: React.FC<AddProductToCartDialogProps> = (
       if (context.orders === undefined) {
         context.orders = [
           {
-            name: props.productName,
+            name: props.product.name,
             size: size,
             number: amount.toString(),
             extension: extension,
@@ -53,13 +55,14 @@ const AddProductToCartDialog: React.FC<AddProductToCartDialogProps> = (
         context.orders = [
           ...context.orders,
           {
-            name: props.productName,
+            name: props.product.name,
             size: size,
             number: amount.toString(),
             extension: extension,
           } as Order,
         ];
       }
+      props.setIsNewOrder(!props.isNewOrder);
     }
     console.log(context);
     props.setOpen(false);
@@ -86,11 +89,11 @@ const AddProductToCartDialog: React.FC<AddProductToCartDialogProps> = (
       <Dialog open={props.open}>
         <DialogTitle>Czy dodać do koszyka następujący produkt?</DialogTitle>
         <Typography variant="h5" sx={{ m: "auto" }}>
-          {props.productName}
+          {props.product.name}
         </Typography>
         <Box sx={{ m: "auto" }}>
           <img
-            src={`data:image/jpeg;base64,${props.imageData}`}
+            src={`data:image/jpeg;base64,${props.product.imageBase64}`}
             alt="Obraz"
             width="100"
             height="100"
