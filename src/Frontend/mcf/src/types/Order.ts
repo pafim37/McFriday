@@ -4,5 +4,3 @@ type Order = {
     number: string;
     extension: Array<string>
 }
-
-export default Order;

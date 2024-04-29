@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import EatPlaceChoose from "./components/EatPlaceChoose.tsx";
 import FoodCatalog from "./components/FoodCatalog.tsx";
-import ProductType from "./types/ProductType.ts";
 import { CartDataProvider } from "./context/CartDataProvider.tsx";
 
 const App = () => {
