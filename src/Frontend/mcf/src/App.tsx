@@ -18,11 +18,23 @@ const App = () => {
     OrderRestartContext
   ) as OrderRestartContextType;
 
-  const { cart } = React.useContext(CartContext) as CartContextType;
-
-  const baseUrl = "http://localhost:5226/";
+  const { cart, setCart } = React.useContext(CartContext) as CartContextType;
 
   React.useEffect(() => {
+    if (!restart) {
+      resetCart();
+      fetchData();
+    }
+    setRestart(false);
+  }, [restart]);
+
+  const resetCart = () => {
+    var newCart = { place: "", orders: [] };
+    setCart(newCart);
+  };
+
+  const fetchData = () => {
+    const baseUrl = "http://localhost:5226/";
     axios
       .get(baseUrl)
       .then((response) => {
@@ -30,11 +42,7 @@ const App = () => {
         console.log(response.data);
       })
       .catch((error) => console.log(error));
-  }, []);
-
-  React.useEffect(() => {
-    console.log("Działa");
-  }, [cart]);
+  };
 
   return (
     <>
