@@ -17,6 +17,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import React from "react";
 import CartContext from "../context/CartDataProvider.tsx";
 import Product from "../types/Product.ts";
+import Order from "../types/Order.ts";
 
 interface AddProductToCartDialogProps {
   open: boolean;
@@ -36,6 +37,7 @@ const AddProductToCartDialog: React.FC<AddProductToCartDialogProps> = (
 
   const handleOrder = (add: boolean) => {
     if (add) {
+      console.log("xyz: ", props.product)
       var extension: Array<string> = [];
       if (isIce) {
         extension = ["WithIce"];
@@ -45,7 +47,7 @@ const AddProductToCartDialog: React.FC<AddProductToCartDialogProps> = (
       if (context.orders === undefined) {
         context.orders = [
           {
-            name: props.product.name,
+            product: props.product,
             size: size,
             number: amount.toString(),
             extension: extension,
@@ -55,7 +57,7 @@ const AddProductToCartDialog: React.FC<AddProductToCartDialogProps> = (
         context.orders = [
           ...context.orders,
           {
-            name: props.product.name,
+            product: props.product,
             size: size,
             number: amount.toString(),
             extension: extension,

@@ -13,6 +13,7 @@ import ProductExposition from "./ProductExposition.tsx";
 import ProductType from "../types/ProductType.ts";
 import Product from "../types/Product.ts";
 import CartContext from "../context/CartDataProvider.tsx";
+import CartDialog from "./CartDialog.tsx";
 
 interface FoodCatalogProps {
   productTypes: Array<ProductType>;
@@ -21,6 +22,7 @@ interface FoodCatalogProps {
 const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
   const [currIndex, setCurrIndex] = React.useState<number>(0);
   const [currProducts, setCurrProducts] = React.useState<Array<Product>>([]);
+  const [isOpenCart, setIsOpenCart] = React.useState<boolean>(false);
   const [isNewOrder, setIsNewOrder] = React.useState<boolean>(true);
   const orderData = React.useContext(CartContext);
 
@@ -28,6 +30,10 @@ const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
     setCurrIndex(index);
     setCurrProducts(productType.products);
   };
+
+  const handleOpenCart = () => {
+    setIsOpenCart(true);
+  }
 
   return (
     <>
@@ -64,9 +70,9 @@ const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
         </Grid>
         <Grid item xs={2}>
           {orderData.orders.map((o, index) => (
-            <Box key={index}>{o.name}</Box>
+            <Box key={index}>{o.product.name}</Box>
           ))}
-          <Button variant="contained">Podejrzyj koszyk</Button>
+          <Button variant="contained" onClick={handleOpenCart}>Podejrzyj koszyk</Button>
         </Grid>
       </Grid>
       <Stack
@@ -75,7 +81,6 @@ const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
         justifyItems={"center"}
         display={"flex"}
         justifyContent={"center"}
-        sx={{ m: "auto" }}
       >
         <Button variant="contained" size="large">
           Przejdź do podsumowania
@@ -84,6 +89,7 @@ const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
           Rozpocznij jeszcze raz
         </Button>
       </Stack>
+      <CartDialog isOpen={isOpenCart} setIsOpen={setIsOpenCart} />
     </>
   );
 };
