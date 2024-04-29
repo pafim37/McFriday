@@ -1,12 +1,19 @@
-import React from "react";
+import React, { FC } from "react";
 import {
+  Box,
+  Button,
   Grid,
   List,
   ListItem,
   ListItemButton,
+  Stack,
   Typography,
 } from "@mui/material";
 import ProductExposition from "./ProductExposition.tsx";
+import ProductType from "../types/ProductType.ts";
+import Product from "../types/Product.ts";
+import CartContext, { CartContextType } from "../context/CartDataProvider.tsx";
+import CartDialog from "./CartDialog.tsx";
 
 interface FoodCatalogProps {
   productTypes: Array<ProductType>;
@@ -15,17 +22,19 @@ interface FoodCatalogProps {
 const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
   const [currIndex, setCurrIndex] = React.useState<number>(0);
   const [currProducts, setCurrProducts] = React.useState<Array<Product>>([]);
+  const [isNewOrder, setIsNewOrder] = React.useState<boolean>(true);
+  const [isOpenCart, setIsOpenCart] = React.useState<boolean>(false);
+  const { cart } = React.useContext(CartContext) as CartContextType;
+  const handleOpenCart = () => {
+    setIsOpenCart(true);
+  };
 
   const handleClick = (index: number, productType: ProductType) => {
     setCurrIndex(index);
     setCurrProducts(productType.products);
   };
-
   return (
     <>
-      <Typography variant="h3" className="header">
-        Witamy w restauracji McFriday
-      </Typography>
       <Grid container>
         <Grid item xs={2}>
           <List>
@@ -41,16 +50,29 @@ const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
             ))}
           </List>
         </Grid>
-        <Grid item xs={10}>
+        <Grid item xs={8}>
           <Grid container>
-            {currProducts.map(p => (
-              <Grid xs={4}>
-                <ProductExposition name={p.name} imageData={p.imageBase64}/>
+            {currProducts.map((p, index) => (
+              <Grid item xs={4} key={index}>
+                <ProductExposition
+                  product={p}
+                  isNewOrder={isNewOrder}
+                  setIsNewOrder={setIsNewOrder}
+                />
               </Grid>
             ))}
           </Grid>
         </Grid>
+        <Grid item xs={2}>
+          {cart.orders.map((order, index) => (
+            <Box key={index}>{order.product.name}</Box>
+          ))}
+          <Button variant="contained" onClick={handleOpenCart}>
+            Podejrzyj koszyk
+          </Button>
+        </Grid>
       </Grid>
+      <CartDialog isOpen={isOpenCart} setIsOpen={setIsOpenCart} />
     </>
   );
 };
