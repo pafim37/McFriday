@@ -9,6 +9,7 @@ import {
 import ProductExposition from "./ProductExposition.tsx";
 import ProductType from "../types/ProductType.ts";
 import Product from "../types/Product.ts";
+import CartContext from "../context/CartDataProvider.tsx";
 
 interface FoodCatalogProps {
   productTypes: Array<ProductType>;
@@ -17,6 +18,7 @@ interface FoodCatalogProps {
 const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
   const [currIndex, setCurrIndex] = React.useState<number>(0);
   const [currProducts, setCurrProducts] = React.useState<Array<Product>>([]);
+  const orderData = React.useContext(CartContext);
 
   const handleClick = (index: number, productType: ProductType) => {
     setCurrIndex(index);
@@ -43,7 +45,7 @@ const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
             ))}
           </List>
         </Grid>
-        <Grid item xs={10}>
+        <Grid item xs={8}>
           <Grid container>
             {currProducts.map((p, index) => (
               <Grid item xs={4} key={index}>
@@ -51,6 +53,9 @@ const FoodCatalog: React.FC<FoodCatalogProps> = (props) => {
               </Grid>
             ))}
           </Grid>
+        </Grid>
+        <Grid item xs={2}>
+          {orderData.order[0].name}
         </Grid>
       </Grid>
     </>

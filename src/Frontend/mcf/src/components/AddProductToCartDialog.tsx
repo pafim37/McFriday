@@ -12,6 +12,8 @@ import {
   FormControl,
 } from "@mui/material";
 import React from "react";
+import CartContext from "../context/CartDataProvider.tsx";
+
 interface AddProductToCartDialogProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -22,15 +24,23 @@ interface AddProductToCartDialogProps {
 const AddProductToCartDialog: React.FC<AddProductToCartDialogProps> = (
   props
 ) => {
-  const [add, setAdd] = React.useState<boolean>(false);
-  const handleCloseDialog = (add: boolean) => {
-    setAdd(add);
+  const context = React.useContext(CartContext);
+
+  const handleOrder = (add: boolean) => {
+    if (add) {
+      console.log(context);
+      if (context.order === undefined) {
+        context.order = [{ name: "Test2", size: "XL", number: "1" } as Order];
+      } else {
+        context.order = [
+          ...context.order,
+          { name: "Test", size: "XL", number: "1" } as Order,
+        ];
+      }
+      console.log("ZADziałało");
+    }
     props.setOpen(false);
   };
-
-  React.useEffect(() => {
-    console.log(add);
-  }, [add]);
 
   return (
     <>
@@ -63,8 +73,8 @@ const AddProductToCartDialog: React.FC<AddProductToCartDialogProps> = (
           </RadioGroup>
         </FormControl>
         <Stack direction={"row"} sx={{ m: "auto" }}>
-          <Button onClick={() => handleCloseDialog(true)}>Tak</Button>
-          <Button onClick={() => handleCloseDialog(false)}>Nie</Button>
+          <Button onClick={() => handleOrder(true)}>Tak</Button>
+          <Button onClick={() => handleOrder(false)}>Nie</Button>
         </Stack>
       </Dialog>
     </>
