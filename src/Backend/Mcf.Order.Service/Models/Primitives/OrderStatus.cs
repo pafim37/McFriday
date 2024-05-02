@@ -1,4 +1,4 @@
-﻿namespace McF.Service.Models.Primitives
+﻿namespace Mcf.Order.Service.Models.Primitives
 {
     public enum OrderStatus
     {

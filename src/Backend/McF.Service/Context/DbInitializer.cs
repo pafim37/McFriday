@@ -1,7 +1,8 @@
-﻿using McF.Process.Models;
+﻿using McF.Service.Models;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
 
-namespace McF.Process.Context
+namespace McF.Service.Context
 {
     public class DbInitializer
     {
@@ -31,11 +32,11 @@ namespace McF.Process.Context
                 new Product() { Id = 2, ProductTypeId = 1, Name = "Sprite", ImageByteArray = File.ReadAllBytes("..//McF.Service//img//sprite.jpg") },
                 new Product() { Id = 3, ProductTypeId = 1, Name = "Fanta", ImageByteArray = File.ReadAllBytes("..//McF.Service//img//fanta.jpg") },
                 new Product() { Id = 4, ProductTypeId = 2, Name = "Hamburger" },
-                new Product() { Id = 5, ProductTypeId = 2, Name = "Cheesehamburger"},
-                new Product() { Id = 6, ProductTypeId = 2, Name = "Spicy Burger"},
-                new Product() { Id = 7, ProductTypeId = 3, Name = "Small fries"},
-                new Product() { Id = 8, ProductTypeId = 3, Name = "Medium fries"},
-                new Product() { Id = 9, ProductTypeId = 3, Name = "Large fries"}
+                new Product() { Id = 5, ProductTypeId = 2, Name = "Cheesehamburger" },
+                new Product() { Id = 6, ProductTypeId = 2, Name = "Spicy Burger" },
+                new Product() { Id = 7, ProductTypeId = 3, Name = "Small fries" },
+                new Product() { Id = 8, ProductTypeId = 3, Name = "Medium fries" },
+                new Product() { Id = 9, ProductTypeId = 3, Name = "Large fries" }
             );
         }
     }

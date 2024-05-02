@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using McF.Service.DTO;
-using McF.Service.Models;
+using Mcf.Order.Service.DTOs;
+using Mcf.Order.Service.Models;
 
-namespace McF.Service.Profiles
+namespace Mcf.Order.Service.Profiles
 {
     public class CartProfile : Profile
     {

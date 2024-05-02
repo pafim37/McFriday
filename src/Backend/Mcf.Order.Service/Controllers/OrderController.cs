@@ -1,12 +1,13 @@
-﻿using McF.Service.Commands;
-using McF.Service.DTO;
+﻿using Mcf.Order.Service.Commands;
+using Mcf.Order.Service.DTOs;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
-namespace McF.Service.Controllers
+namespace Mcf.Order.Service.Controllers
 {
     [ApiController]
-    public class OrderController : Controller
+    public class OrderController : ControllerBase
     {
         private readonly IMediator mediator;
 

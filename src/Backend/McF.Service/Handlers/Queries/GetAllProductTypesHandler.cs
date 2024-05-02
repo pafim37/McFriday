@@ -1,20 +1,23 @@
 ﻿using AutoMapper;
-using McF.Process.DAL;
-using McF.Process.DTO;
-using McF.Process.Models;
-using McF.Process.Queries;
+using McF.Service.DAL;
+using McF.Service.DTO;
+using McF.Service.Models;
+using McF.Service.Queries;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace McF.Service.Handlers.Queries
 {
     public class GetAllProductTypesHandler : IRequestHandler<GetAllProductTypesQuery, IEnumerable<ProductTypeDTO>>
     {
-        private readonly IRepository repository;
+        private readonly IProductRepository repository;
         private readonly IMapper mapper;
         private readonly ILogger logger;
 
-        public GetAllProductTypesHandler(IRepository repository, IMapper mapper, ILogger<GetAllProductTypesHandler> logger)
+        public GetAllProductTypesHandler(IProductRepository repository, IMapper mapper, ILogger<GetAllProductTypesHandler> logger)
         {
             this.repository = repository;
             this.mapper = mapper;

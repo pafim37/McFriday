@@ -1,6 +1,6 @@
-﻿using McF.Process.Models;
+﻿using System.Collections.Generic;
 
-namespace McF.Process.DTO
+namespace McF.Service.DTO
 {
     public class ProductTypeDTO
     {

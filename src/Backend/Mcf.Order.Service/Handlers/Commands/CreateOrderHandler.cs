@@ -1,21 +1,22 @@
 ﻿using AutoMapper;
-using McF.Process.DAL;
-using McF.Service.Commands;
-using McF.Service.Generators;
-using McF.Service.Handlers.Queries;
-using McF.Service.Models;
+using Mcf.Order.Service.Commands;
+using Mcf.Order.Service.DAL;
+using Mcf.Order.Service.Generators;
+using Mcf.Order.Service.Models;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace McF.Service.Handlers.Commands
+namespace Mcf.Order.Service.Handlers.Commands
 {
     public class CreateOrderHandler : IRequestHandler<CreateOrderCommand, int>
     {
-        private readonly IRepository repository;
+        private readonly IOrderRepository repository;
         private readonly IMapper mapper;
         private readonly ILogger logger;
 
-        public CreateOrderHandler(IRepository repository, IMapper mapper, ILogger<GetAllProductTypesHandler> logger)
+        public CreateOrderHandler(IOrderRepository repository, IMapper mapper, ILogger<CreateOrderHandler> logger)
         {
             this.repository = repository;
             this.mapper = mapper;

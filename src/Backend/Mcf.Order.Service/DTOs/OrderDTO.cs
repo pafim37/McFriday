@@ -1,4 +1,6 @@
-﻿namespace McF.Service.DTO
+﻿using System.Collections.Generic;
+
+namespace Mcf.Order.Service.DTOs
 {
     public class OrderDTO
     {

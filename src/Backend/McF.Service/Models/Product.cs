@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace McF.Process.Models
+namespace McF.Service.Models
 {
     public class Product
     {

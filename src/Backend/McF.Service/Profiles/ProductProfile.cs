@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using McF.Process.DTO;
-using McF.Process.Models;
+using McF.Service.DTO;
+using McF.Service.Models;
+using System;
 
-namespace McF.Process.Profiles
+namespace McF.Service.Profiles
 {
     public class ProductProfile : Profile
     {

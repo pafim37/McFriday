@@ -1,4 +1,4 @@
-﻿namespace McF.Process.DTO
+﻿namespace McF.Service.DTO
 {
     public class ProductDTO
     {

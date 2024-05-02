@@ -1,4 +1,6 @@
-﻿namespace McF.Process.Models
+﻿using System.Collections.Generic;
+
+namespace McF.Service.Models
 {
     public class ProductType
     {

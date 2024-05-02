@@ -1,6 +1,7 @@
-﻿using McF.Service.Models.Primitives;
+﻿using Mcf.Order.Service.Models.Primitives;
+using System.Collections.Generic;
 
-namespace McF.Service.Models
+namespace Mcf.Order.Service.Models
 {
     public class Cart
     {
@@ -8,7 +9,6 @@ namespace McF.Service.Models
         public string? Place { get; set; }
         public int CustomerId { get; set; }
         public OrderStatus Status { get; set; }
-        public List<Order> Orders { get; set; }
-
+        public List<OrderEntity>? Orders { get; set; }
     }
 }
