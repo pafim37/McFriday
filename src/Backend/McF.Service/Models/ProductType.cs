@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 
-namespace McF.Service.Models
+namespace McF.Product.Service.Models
 {
     public class ProductType
     {
         public int Id { get; set; }
         public string? Name { get; set; }
-        public ICollection<Product>? Products { get; } = new List<Product>();
+        public ICollection<ProductEntity>? Products { get; } = new List<ProductEntity>();
     }
 }

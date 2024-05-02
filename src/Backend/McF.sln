@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "McF.Process", "McF.Process\McF.Process.csproj", "{1D0FDA53-338D-4CAB-8B8B-8FB2F84F4DEB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "McF.Service", "McF.Service\McF.Service.csproj", "{C7E59AB5-75DE-41A9-9A03-6806D21D262C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "McF.Product.Service", "McF.Service\McF.Product.Service.csproj", "{C7E59AB5-75DE-41A9-9A03-6806D21D262C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mcf.Order.Service", "Mcf.Order.Service\Mcf.Order.Service.csproj", "{2F6C2F31-2CA0-456F-8ADA-B662163D8EA7}"
 EndProject

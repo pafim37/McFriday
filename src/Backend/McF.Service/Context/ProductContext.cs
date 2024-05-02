@@ -1,18 +1,18 @@
-﻿using McF.Service.Models;
+﻿using McF.Product.Service.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace McF.Service.Context
+namespace McF.Product.Service.Context
 {
-    public class AppDbContext : DbContext
+    public class ProductContext : DbContext
     {
         protected readonly IConfiguration configuration;
-        public AppDbContext(IConfiguration configuration)
+        public ProductContext(IConfiguration configuration)
         {
             this.configuration = configuration;
         }
 
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Models.ProductEntity> Products { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -22,7 +22,7 @@ namespace McF.Service.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>()
+            modelBuilder.Entity<Models.ProductEntity>()
                 .HasOne(e => e.ProductType)
                 .WithMany(e => e.Products)
                 .HasForeignKey(e => e.ProductTypeId)

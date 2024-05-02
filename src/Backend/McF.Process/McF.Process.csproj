@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Mcf.Order.Service\Mcf.Order.Service.csproj" />
-    <ProjectReference Include="..\McF.Service\McF.Service.csproj" />
+    <ProjectReference Include="..\McF.Service\McF.Product.Service.csproj" />
   </ItemGroup>
 
 </Project>

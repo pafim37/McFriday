@@ -1,4 +1,4 @@
-﻿namespace McF.Service.Generators
+﻿namespace McF.Product.Service.Generators
 {
     public static class GeneratorId
     {

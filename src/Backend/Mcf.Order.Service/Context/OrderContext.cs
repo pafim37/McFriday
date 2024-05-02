@@ -4,10 +4,10 @@ using Microsoft.Extensions.Configuration;
 
 namespace Mcf.Order.Service.Context
 {
-    public class AppDbContext : DbContext
+    public class OrderContext : DbContext
     {
         protected readonly IConfiguration configuration;
-        public AppDbContext(IConfiguration configuration)
+        public OrderContext(IConfiguration configuration)
         {
             this.configuration = configuration;
         }

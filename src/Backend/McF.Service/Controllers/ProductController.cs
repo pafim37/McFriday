@@ -1,11 +1,11 @@
-﻿using McF.Service.DTO;
-using McF.Service.Queries;
+﻿using McF.Product.Service.DTO;
+using McF.Product.Service.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace McF.Service.Controllers
+namespace McF.Product.Service.Controllers
 {
     [ApiController]
     public class ProductController : Controller

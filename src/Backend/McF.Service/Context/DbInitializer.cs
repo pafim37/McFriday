@@ -1,8 +1,8 @@
-﻿using McF.Service.Models;
+﻿using McF.Product.Service.Models;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 
-namespace McF.Service.Context
+namespace McF.Product.Service.Context
 {
     public class DbInitializer
     {
@@ -27,16 +27,16 @@ namespace McF.Service.Context
                 setType
             );
 
-            modelBuilder.Entity<Product>().HasData(
-                new Product() { Id = 1, ProductTypeId = 1, Name = "Cocacola", ImageByteArray = File.ReadAllBytes("..//McF.Service//img//cocacola.jpg") },
-                new Product() { Id = 2, ProductTypeId = 1, Name = "Sprite", ImageByteArray = File.ReadAllBytes("..//McF.Service//img//sprite.jpg") },
-                new Product() { Id = 3, ProductTypeId = 1, Name = "Fanta", ImageByteArray = File.ReadAllBytes("..//McF.Service//img//fanta.jpg") },
-                new Product() { Id = 4, ProductTypeId = 2, Name = "Hamburger" },
-                new Product() { Id = 5, ProductTypeId = 2, Name = "Cheesehamburger" },
-                new Product() { Id = 6, ProductTypeId = 2, Name = "Spicy Burger" },
-                new Product() { Id = 7, ProductTypeId = 3, Name = "Small fries" },
-                new Product() { Id = 8, ProductTypeId = 3, Name = "Medium fries" },
-                new Product() { Id = 9, ProductTypeId = 3, Name = "Large fries" }
+            modelBuilder.Entity<ProductEntity>().HasData(
+                new ProductEntity() { Id = 1, ProductTypeId = 1, Name = "Cocacola", ImageByteArray = File.ReadAllBytes("..//McF.Service//img//cocacola.jpg") },
+                new ProductEntity() { Id = 2, ProductTypeId = 1, Name = "Sprite", ImageByteArray = File.ReadAllBytes("..//McF.Service//img//sprite.jpg") },
+                new ProductEntity() { Id = 3, ProductTypeId = 1, Name = "Fanta", ImageByteArray = File.ReadAllBytes("..//McF.Service//img//fanta.jpg") },
+                new ProductEntity() { Id = 4, ProductTypeId = 2, Name = "Hamburger" },
+                new ProductEntity() { Id = 5, ProductTypeId = 2, Name = "Cheesehamburger" },
+                new ProductEntity() { Id = 6, ProductTypeId = 2, Name = "Spicy Burger" },
+                new ProductEntity() { Id = 7, ProductTypeId = 3, Name = "Small fries" },
+                new ProductEntity() { Id = 8, ProductTypeId = 3, Name = "Medium fries" },
+                new ProductEntity() { Id = 9, ProductTypeId = 3, Name = "Large fries" }
             );
         }
     }

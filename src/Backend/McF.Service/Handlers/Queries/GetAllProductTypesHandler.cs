@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
-using McF.Service.DAL;
-using McF.Service.DTO;
-using McF.Service.Models;
-using McF.Service.Queries;
+using McF.Product.Service.DAL;
+using McF.Product.Service.DTO;
+using McF.Product.Service.Models;
+using McF.Product.Service.Queries;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace McF.Service.Handlers.Queries
+namespace McF.Product.Service.Handlers.Queries
 {
     public class GetAllProductTypesHandler : IRequestHandler<GetAllProductTypesQuery, IEnumerable<ProductTypeDTO>>
     {

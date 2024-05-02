@@ -1,7 +1,8 @@
 using Mcf.Order.Service.Controllers;
 using Mcf.Order.Service.DAL;
-using McF.Service.Controllers;
-using McF.Service.DAL;
+using McF.Product.Service.Context;
+using McF.Product.Service.Controllers;
+using McF.Product.Service.DAL;
 using Microsoft.EntityFrameworkCore;
 
 namespace McF.Process
@@ -24,9 +25,9 @@ namespace McF.Process
 
             // Add Postgres database
             IConfiguration configuration = builder.Configuration;
-            builder.Services.AddDbContext<Mcf.Order.Service.Context.AppDbContext>(options =>
+            builder.Services.AddDbContext<Mcf.Order.Service.Context.OrderContext>(options =>
                options.UseNpgsql(configuration.GetConnectionString("AppDb")));
-            builder.Services.AddDbContext<McF.Service.Context.AppDbContext>(options =>
+            builder.Services.AddDbContext<ProductContext>(options =>
                options.UseNpgsql(configuration.GetConnectionString("AppDb")));
 
             // Add services to the container.

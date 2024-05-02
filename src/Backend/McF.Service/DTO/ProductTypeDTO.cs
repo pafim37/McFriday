@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace McF.Service.DTO
+namespace McF.Product.Service.DTO
 {
     public class ProductTypeDTO
     {

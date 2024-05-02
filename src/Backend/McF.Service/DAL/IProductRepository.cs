@@ -1,8 +1,8 @@
-﻿using McF.Service.Models;
+﻿using McF.Product.Service.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace McF.Service.DAL
+namespace McF.Product.Service.DAL
 {
     public interface IProductRepository
     {

@@ -5,9 +5,9 @@ namespace Mcf.Order.Service.DAL
 {
     public class OrderRepository : IOrderRepository
     {
-        private readonly AppDbContext context;
+        private readonly OrderContext context;
 
-        public OrderRepository(AppDbContext context)
+        public OrderRepository(OrderContext context)
         {
             this.context = context;
         }

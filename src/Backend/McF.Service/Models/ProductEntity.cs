@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace McF.Service.Models
+namespace McF.Product.Service.Models
 {
-    public class Product
+    public class ProductEntity
     {
         public int Id { get; set; }
         [ForeignKey("ProductType")]
