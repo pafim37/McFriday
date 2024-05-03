@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Mcf.Common.Models;
+using System.Collections.Generic;
 
 namespace McF.Product.Service.Models
 {
-    public class ProductType
+    public class ProductTypeEntity : Entity
     {
-        public int Id { get; set; }
         public string? Name { get; set; }
         public ICollection<ProductEntity>? Products { get; } = new List<ProductEntity>();
     }

@@ -6,7 +6,7 @@ namespace McF.Product.Service.DAL
 {
     public interface IProductRepository
     {
-        public Task<IEnumerable<ProductType>> GetAllProductTypes();
+        public Task<IEnumerable<ProductTypeEntity>> GetAllProductTypes();
 
     }
 }

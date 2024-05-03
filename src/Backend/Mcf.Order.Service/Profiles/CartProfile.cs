@@ -8,7 +8,7 @@ namespace Mcf.Order.Service.Profiles
     {
         public CartProfile()
         {
-            _ = CreateMap<CartDTO, Cart>()
+            _ = CreateMap<CartDTO, CartEntity>()
                 .ForMember(des => des.Place, src => src.MapFrom(s => s.Place))
                 .ForMember(des => des.Orders, src => src.MapFrom(s => s.Orders))
                 .ReverseMap();

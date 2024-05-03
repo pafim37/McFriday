@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using Mcf.Common.Models;
 
 namespace McF.Product.Service.Models
 {
-    public class ProductEntity
+    public class ProductEntity : Entity
     {
-        public int Id { get; set; }
         [ForeignKey("ProductType")]
         public int ProductTypeId { get; set; }
-        public ProductType? ProductType { get; set; }
+        public ProductTypeEntity? ProductType { get; set; }
         public string? Name { get; set; }
         public byte[]? ImageByteArray { get; set; }
     }

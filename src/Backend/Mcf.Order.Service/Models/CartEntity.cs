@@ -1,11 +1,11 @@
 ﻿using Mcf.Order.Service.Models.Primitives;
 using System.Collections.Generic;
+using Mcf.Common.Models;
 
 namespace Mcf.Order.Service.Models
 {
-    public class Cart
+    public class CartEntity : Entity
     {
-        public int Id { get; set; }
         public string? Place { get; set; }
         public int CustomerId { get; set; }
         public OrderStatus Status { get; set; }

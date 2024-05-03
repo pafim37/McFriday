@@ -26,7 +26,7 @@ namespace McF.Product.Service.Handlers.Queries
         public async Task<IEnumerable<ProductTypeDTO>> Handle(GetAllProductTypesQuery request, CancellationToken cancellationToken)
         {
             logger.LogInformation("Start handling request {typeof(request)}", request);
-            IEnumerable<ProductType> productTypes = await repository.GetAllProductTypes().ConfigureAwait(false);
+            IEnumerable<ProductTypeEntity> productTypes = await repository.GetAllProductTypes().ConfigureAwait(false);
             IEnumerable<ProductTypeDTO> result = mapper.Map<IEnumerable<ProductTypeDTO>>(productTypes);
             logger.LogInformation("End handling request {typeof(request)}", request);
             return result;

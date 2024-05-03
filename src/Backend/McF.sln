@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "McF.Product.Service", "McF.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mcf.Order.Service", "Mcf.Order.Service\Mcf.Order.Service.csproj", "{2F6C2F31-2CA0-456F-8ADA-B662163D8EA7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mcf.Common", "Mcf.Common\Mcf.Common.csproj", "{CFA78D54-30BA-4D65-8E93-D48403220247}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2F6C2F31-2CA0-456F-8ADA-B662163D8EA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F6C2F31-2CA0-456F-8ADA-B662163D8EA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F6C2F31-2CA0-456F-8ADA-B662163D8EA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA78D54-30BA-4D65-8E93-D48403220247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA78D54-30BA-4D65-8E93-D48403220247}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA78D54-30BA-4D65-8E93-D48403220247}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA78D54-30BA-4D65-8E93-D48403220247}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

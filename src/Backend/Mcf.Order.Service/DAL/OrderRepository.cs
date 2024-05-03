@@ -11,7 +11,7 @@ namespace Mcf.Order.Service.DAL
         {
             this.context = context;
         }
-        public async Task CreateOrder(Cart cart)
+        public async Task CreateOrder(CartEntity cart)
         {
             await context.Carts.AddAsync(cart).ConfigureAwait(false);
             context.SaveChanges();

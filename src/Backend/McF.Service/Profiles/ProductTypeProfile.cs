@@ -8,7 +8,7 @@ namespace McF.Product.Service.Profiles
     {
         public ProductTypeProfile()
         {
-            _ = CreateMap<ProductType, ProductTypeDTO>()
+            _ = CreateMap<ProductTypeEntity, ProductTypeDTO>()
                 .ReverseMap();
         }
     }

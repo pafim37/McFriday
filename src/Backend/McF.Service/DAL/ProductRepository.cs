@@ -15,7 +15,7 @@ namespace McF.Product.Service.DAL
             this.context = context;
         }
 
-        public async Task<IEnumerable<ProductType>> GetAllProductTypes()
+        public async Task<IEnumerable<ProductTypeEntity>> GetAllProductTypes()
         {
             return await context.ProductTypes.Include(p => p.Products).ToListAsync();
         }

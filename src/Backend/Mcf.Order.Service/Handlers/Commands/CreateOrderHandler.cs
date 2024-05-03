@@ -26,7 +26,7 @@ namespace Mcf.Order.Service.Handlers.Commands
         public async Task<int> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {
             logger.LogInformation("Start handling request {typeof(request)}", request);
-            Cart cart = mapper.Map<Cart>(request.CartDTO);
+            CartEntity cart = mapper.Map<CartEntity>(request.CartDTO);
             cart.Status = Models.Primitives.OrderStatus.InProgress;
             int customerId = GeneratorId.GetNext();
             cart.CustomerId = customerId;

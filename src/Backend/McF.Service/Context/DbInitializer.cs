@@ -15,12 +15,12 @@ namespace McF.Product.Service.Context
 
         public void Seed()
         {
-            var drinkType = new ProductType() { Id = 1, Name = "Drink" };
-            var sandwitchType = new ProductType() { Id = 2, Name = "Sandwich" };
-            var friesType = new ProductType() { Id = 3, Name = "Fries" };
-            var setType = new ProductType() { Id = 4, Name = "Fries" };
+            var drinkType = new ProductTypeEntity() { Id = 1, Name = "Drink" };
+            var sandwitchType = new ProductTypeEntity() { Id = 2, Name = "Sandwich" };
+            var friesType = new ProductTypeEntity() { Id = 3, Name = "Fries" };
+            var setType = new ProductTypeEntity() { Id = 4, Name = "Fries" };
 
-            modelBuilder.Entity<ProductType>().HasData(
+            modelBuilder.Entity<ProductTypeEntity>().HasData(
                 drinkType,
                 sandwitchType,
                 friesType,

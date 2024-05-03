@@ -12,7 +12,7 @@ namespace Mcf.Order.Service.Context
             this.configuration = configuration;
         }
 
-        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartEntity> Carts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

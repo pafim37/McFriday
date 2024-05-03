@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Mcf.Common.Models;
+using System.Collections.Generic;
 
 namespace Mcf.Order.Service.Models
 {
-    public class OrderEntity
+    public class OrderEntity : Entity
     {
-        public int Id { get; set; }
         public string? ProductName { get; set; }
         public string? ProductType { get; set; }
         public string? Size { get; set; }

@@ -13,7 +13,7 @@ namespace McF.Product.Service.Context
         }
 
         public DbSet<Models.ProductEntity> Products { get; set; }
-        public DbSet<ProductType> ProductTypes { get; set; }
+        public DbSet<ProductTypeEntity> ProductTypes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
