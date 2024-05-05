@@ -1,8 +1,9 @@
-using McF.Process.Context;
-using McF.Process.Controllers;
-using McF.Process.DAL;
+using Mcf.Order.Service.Controllers;
+using Mcf.Order.Service.DAL;
+using McF.Product.Service.Context;
+using McF.Product.Service.Controllers;
+using McF.Product.Service.DAL;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 
 namespace McF.Process
 {
@@ -24,7 +25,9 @@ namespace McF.Process
 
             // Add Postgres database
             IConfiguration configuration = builder.Configuration;
-            builder.Services.AddDbContext<AppDbContext>(options =>
+            builder.Services.AddDbContext<Mcf.Order.Service.Context.OrderContext>(options =>
+               options.UseNpgsql(configuration.GetConnectionString("AppDb")));
+            builder.Services.AddDbContext<ProductContext>(options =>
                options.UseNpgsql(configuration.GetConnectionString("AppDb")));
 
             // Add services to the container.
@@ -32,9 +35,11 @@ namespace McF.Process
                 .AddNewtonsoftJson(options =>
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-            builder.Services.AddTransient<IRepository, Repository>();
+            builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+            builder.Services.AddTransient<IProductRepository, ProductRepository>();
 
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ProductController).Assembly));
+            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(OrderController).Assembly));
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
